@@ -26,19 +26,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          # لغينا الكاش التلقائي هنا عشان نضمن تسطيب نظيف بدون ملفات قديمة معطوبة
-          
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
 
       - name: Install dependencies
-        # استخدمنا السطر ده مباشرة لحل مشكلة تضارب إصدارات React 19
-        run: npm install --legacy-peer-deps
+        # الحل النهائي: حذف ملف الـ Lock القديم وتثبيت المكتبات باستخدام flag التوافق
+        run: |
+          rm -f package-lock.json
+          npm install --legacy-peer-deps
 
       - name: Build with Next.js
-        # تشغيل الـ build لإنتاج ملفات ثابتة في فولدر out
+        # التأكد من عمل Build للملفات الثابتة
         run: npx next build
 
       - name: Upload artifact
