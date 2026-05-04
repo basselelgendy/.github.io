@@ -33,13 +33,13 @@ jobs:
           static_site_generator: next
 
       - name: Install dependencies
-        # الحل النهائي: حذف ملف الـ Lock القديم وتثبيت المكتبات باستخدام flag التوافق
+        # الحل القاطع: حذف ملفات التثبيت السابقة وإجبار النظام على استخدام legacy-peer-deps
         run: |
+          rm -rf node_modules
           rm -f package-lock.json
           npm install --legacy-peer-deps
 
       - name: Build with Next.js
-        # التأكد من عمل Build للملفات الثابتة
         run: npx next build
 
       - name: Upload artifact
