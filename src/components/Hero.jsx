@@ -124,7 +124,7 @@ const Hero = memo(function Hero() {
 
                         {/* Email */}
                         <motion.a
-                            href="mailto:@gmail.com"
+                            href="mailto: baselelgendy14@gmail.com"
                             className="w-12 h-12 p-[1.5px] rounded-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-[#915EFF] hover:to-[#915EFF] cursor-pointer group"
                             whileHover={iconHoverAnimation}
                         >
